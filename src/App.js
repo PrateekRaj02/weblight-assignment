@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import {Container, Typography } from '@mui/material';
+import RepoList from './component/RepoList';
 
 function App() {
+  const [page, setPage] = useState(1);
+
+  const loadMoreRepos = () => {
+    setPage(page + 1);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Typography variant="h4" sx={{ my: 4 }}>Most Starred Repos</Typography>
+        <RepoList page={page} />
+      </Container>
     </div>
   );
 }
